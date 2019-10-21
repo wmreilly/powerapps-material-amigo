@@ -1,0 +1,58 @@
+// Goal is to produce a searchable gallery that performs a dynamic switch of the data searched via a dropdown list of data-lists
+
+// Switch function is used to point to the data-set based on user-selection of project name via DropDown1_9
+// If no department is choosen then unfiltered data set is displayed (view all records)
+// If department is choosen then data set is filtered to display all records in that departments 'BallInCourt'
+// If text is input into TextSearchBox1_6 then filtered data is filtered further based on any exact string matches
+//  (cont.) in the columns of 'Title', 'Description', and 'Vendor' of the records  
+
+If(
+    Dropdown2_3.SelectedText.Value = "Choose Department",
+    Switch(
+                Dropdown1_9.SelectedText.Value,
+                "18005 - Denargo",
+                '18005-Denargo-ABOM',
+                "UC-Davis [E2.2] - TEST",
+                '18101-E2.2-UCDavis-BOM',
+                "18104 - UC-Davis [E2.3]",
+                '18104-UCDavisE2.3-ABOM',
+                "18105 - UC-Davis [E3.3]",
+                '18105-UCDavisE3.3-ABOM',
+                "18106 - UC-Davis [I2.4]",
+                '18106-UCDavisI2.4-ABOM',
+                "18107 - UC-Davis [E2.5]",
+                '18107-UCDavisE2.5-ABOM',
+                "18108 - UC-Davis [E3.5]",
+                '18108-UCDavisE3.5-ABOM',
+                "17007 - Grandscape",
+                '17007-Grandscape-ABOM'
+            ),
+    Search(
+        Filter(
+            Switch(
+                Dropdown1_9.SelectedText.Value,
+                "18005 - Denargo",
+                '18005-Denargo-ABOM',
+                "UC-Davis [E2.2] - TEST",
+                '18101-E2.2-UCDavis-BOM',
+                "18104 - UC-Davis [E2.3]",
+                '18104-UCDavisE2.3-ABOM',
+                "18105 - UC-Davis [E3.3]",
+                '18105-UCDavisE3.3-ABOM',
+                "18106 - UC-Davis [I2.4]",
+                '18106-UCDavisI2.4-ABOM',
+                "18107 - UC-Davis [E2.5]",
+                '18107-UCDavisE2.5-ABOM',
+                "18108 - UC-Davis [E3.5]",
+                '18108-UCDavisE3.5-ABOM',
+                "17007 - Grandscape",
+                '17007-Grandscape-ABOM'
+            ),
+            BallInCourt = Dropdown2_3.SelectedText.Value
+        ),
+        TextSearchBox1_6.Text,
+        "Title",
+        "Description",
+        "Vendor"
+    )
+)
